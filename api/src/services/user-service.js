@@ -22,4 +22,9 @@ export const userService = {
         });
         return { user, token };
     },
+    createUser: async (username, password) => {
+        const hashedPassword = authUtils.generateHashedPassword(password);
+        const user = await userRepository.createUser(username, hashedPassword);
+        return user;
+    },
 };

@@ -7,6 +7,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { authenticateToken } from "./middlewares/authenticateToken.js";
 import { authRouter } from "./routes/auth-router.js";
+import { userRouter } from "./routes/user-router.js";
 // import configs from "./configs/index.js";
 
 /**
@@ -56,7 +57,7 @@ app.use(authenticateToken);
  */
 
 // app.use("/api/posts", postsRouter);
-// app.use("/api/users", usersRouter);
+app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 
 /**

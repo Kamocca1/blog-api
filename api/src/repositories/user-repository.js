@@ -10,4 +10,13 @@ export const userRepository = {
             where: { username },
         });
     },
+    createUser: async (username, password) => {
+        return await prisma.user.create({
+            data: {
+                username: username,
+                password: password,
+                role_id: 1,
+            },
+        });
+    },
 };
