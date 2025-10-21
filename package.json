@@ -1,0 +1,22 @@
+{
+    "name": "blog-api",
+    "version": "1.0.0",
+    "description": "A practical example of how to create a back-end API demonstrated by creating a blog app.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Kamocca1/blog-api.git"
+    },
+    "author": "Kamocca",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Kamocca1/blog-api/issues"
+    },
+    "homepage": "https://github.com/Kamocca1/blog-api#readme",
+    "dependencies": {
+        "dotenv": "^17.2.3"
+    }
+}
