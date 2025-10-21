@@ -5,7 +5,10 @@ export const authController = {
     loginHandler: async (req, res, next) => {
         const { username, password } = req.body;
         try {
-            const { user, token } = userService.loginUser(username, password);
+            const { user, token } = await userService.loginUser(
+                username,
+                password
+            );
             res.cookie("token", token, {
                 httpOnly: true,
                 maxAge: 604800000,
@@ -14,7 +17,7 @@ export const authController = {
             });
             res.status(200).json({
                 message: "Login successful",
-                user: { username: user.username, role_id: user.role_id },
+                user: { username: user.username, role: user.role },
             });
         } catch (err) {
             next(err);

@@ -7,7 +7,7 @@ export const userRepository = {
     },
     getUserByUsername: async (username) => {
         return await prisma.user.findUnique({
-            where: { username },
+            where: { username: username },
         });
     },
     createUser: async (username, password) => {
@@ -15,7 +15,6 @@ export const userRepository = {
             data: {
                 username: username,
                 password: password,
-                role_id: 1,
             },
         });
     },

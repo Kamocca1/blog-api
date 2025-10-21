@@ -2,9 +2,9 @@ import { userService } from "../services/user-service.js";
 import CustomError from "../utils/custom-error.js";
 
 const userController = {
-    createUser: async (req, res, next) => {
+    createUserHandler: async (req, res, next) => {
         try {
-            const user = await userService.createUser(
+            const user = await userService.createNewUser(
                 req.body.username,
                 req.body.password
             );

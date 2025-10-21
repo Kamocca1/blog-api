@@ -1,6 +1,5 @@
-// import jwt from "jsonwebtoken";
-
-import { authUtils } from "../utils/auth-utils.js";
+import jwt from "jsonwebtoken";
+// import { authUtils } from "../utils/auth-utils.js";
 
 function authenticateToken(req, res, next) {
     const token = req.cookies.token;
@@ -10,23 +9,23 @@ function authenticateToken(req, res, next) {
         return next();
     }
 
-    // jwt.verify(token, process.env.TOKEN_SECRET, (err, data) => {
-    //     if (err) {
-    //         req.user = null;
-    //         return next();
-    //     }
-    //     req.user = { username: data.user.username, role_id: data.user.role_id };
-    //     next();
-    // });
-    const { err, data } = authUtils.verifyToken(token);
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, data) => {
+        if (err) {
+            req.user = null;
+            return next();
+        }
+        req.user = { username: data.user.username, role: data.user.role };
+        next();
+    });
+    // const { err, data } = authUtils.verifyToken(token);
 
-    if (err) {
-        req.user = null;
-        return next();
-    }
+    // if (err) {
+    //     req.user = null;
+    //     return next();
+    // }
 
-    req.user = { username: data.user.username, role_id: data.user.role_id };
-    next();
+    // req.user = { username: data.user.username, role: data.user.role };
+    // next();
 }
 
 export { authenticateToken };

@@ -5,7 +5,7 @@ CustomError;
 
 export const userService = {
     loginUser: async (username, password) => {
-        const user = userRepository.getUserByUsername(username);
+        const user = await userRepository.getUserByUsername(username);
 
         if (!user) {
             throw new CustomError(401, "Invalid username");
@@ -22,8 +22,8 @@ export const userService = {
         });
         return { user, token };
     },
-    createUser: async (username, password) => {
-        const hashedPassword = authUtils.generateHashedPassword(password);
+    createNewUser: async (username, password) => {
+        const hashedPassword = await authUtils.generateHashedPassword(password);
         const user = await userRepository.createUser(username, hashedPassword);
         return user;
     },
