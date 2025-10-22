@@ -86,5 +86,5 @@ app.listen(PORT, (error) => {
         throw error;
     }
 
-    console.log(`File uploader app - listening on port ${PORT}!`);
+    console.log(`Blog api - listening on port ${PORT}!`);
 });
