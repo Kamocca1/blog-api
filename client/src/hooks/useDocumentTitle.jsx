@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 function useDocumentTitle(title) {
     useEffect(() => {
-        document.title = `Founder Corner | ${title}`;
+        document.title = `aspdevs | ${title}`;
     }, [title]);
 }
 

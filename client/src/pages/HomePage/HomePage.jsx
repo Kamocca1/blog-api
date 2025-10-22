@@ -59,7 +59,7 @@ function HomePage() {
                                 Welcome to asp<span>devs</span>
                             </h2>
                             <p>
-                                Hi there! My name is Dominik Augustyn, and this
+                                Hi there! My name is Kamohelo Matobako, and this
                                 is my blog: written by an aspiring web
                                 developer, for other aspiring developers. Feel
                                 free to read all about my insights, experiences,
