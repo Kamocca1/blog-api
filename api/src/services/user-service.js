@@ -27,4 +27,14 @@ export const userService = {
         const user = await userRepository.createUser(username, hashedPassword);
         return user;
     },
+    getUser: async (username) => {
+        const user = await userRepository.getUserByUsername(username);
+        if (user == null) {
+            throw new CustomError(
+                404,
+                `User ${username} was not found on the server.`
+            );
+        }
+        return user;
+    },
 };

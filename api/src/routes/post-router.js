@@ -18,21 +18,21 @@ const limiter = rateLimit({
 // Default path: /api/posts
 postRouter
     .route("/")
-    .get(postController.getAllPosts)
-    .post(upload.single("cover"), postController.createPost);
+    .get(postController.getAllPostsHandler)
+    .post(upload.single("cover"), postController.createPostHandler);
 
 postRouter
     .route("/:post_id")
-    .put(upload.single("cover"), postController.editPost)
-    .delete(postController.deletePost);
+    .put(upload.single("cover"), postController.editPostHandler)
+    .delete(postController.deletePostHandler);
 
-postRouter.route("/tags").get(postController.getAllTags);
+postRouter.route("/tags").get(postController.getAllTagsHandler);
 
-postRouter.route("/:post_title").get(postController.getPostByTitle);
+postRouter.route("/:post_title").get(postController.getPostByTitleHandler);
 
 postRouter
     .route("/:post_title/comments")
-    .get(postController.getComments)
-    .post(limiter, postController.createComment);
+    .get(postController.getCommentsHandler)
+    .post(limiter, postController.createCommentHandler);
 
 export { postRouter };
