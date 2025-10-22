@@ -1,3 +1,4 @@
+import { v2 as cloudinary } from "cloudinary";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import "dotenv/config";
@@ -7,12 +8,19 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { authenticateToken } from "./middlewares/authenticateToken.js";
 import { authRouter } from "./routes/auth-router.js";
+import { postRouter } from "./routes/post-router.js";
 import { userRouter } from "./routes/user-router.js";
 // import configs from "./configs/index.js";
 
 /**
  * -------------- GENERAL SETUP ----------------
  */
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const app = express();
 
@@ -56,7 +64,7 @@ app.use(authenticateToken);
  * -------------- ROUTES ----------------
  */
 
-// app.use("/api/posts", postsRouter);
+app.use("/api/posts", postRouter);
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 
